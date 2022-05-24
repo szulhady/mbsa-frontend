@@ -129,7 +129,7 @@ export default {
   methods: {
     getDataMBSA: function () {
       this.$axios
-        .$get("http://157.245.63.156/api/total/latestMBSA", {})
+        .$get("http://165.232.167.69/api/total/latestMBSA", {})
         // .$get("http://68.183.189.84:7777/api/total/latestMBSA", {})
         // .$get("http://localhost:7777/api/total/latestMBSA", {})
         .then((response) => {
