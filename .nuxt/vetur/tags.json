@@ -1,0 +1,47 @@
+{
+  "BarChartHorizontal": {
+    "description": "Auto imported from components/BarChartHorizontal.vue"
+  },
+  "BarChartVertival": {
+    "description": "Auto imported from components/BarChartVertival.vue"
+  },
+  "DetailBuilding": {
+    "description": "Auto imported from components/DetailBuilding.vue"
+  },
+  "DetailCard": {
+    "description": "Auto imported from components/DetailCard.vue"
+  },
+  "DetailCards": {
+    "description": "Auto imported from components/DetailCards.vue"
+  },
+  "Frame": {
+    "description": "Auto imported from components/Frame.vue"
+  },
+  "Frame2": {
+    "description": "Auto imported from components/Frame2.vue"
+  },
+  "Frame3": {
+    "description": "Auto imported from components/Frame3.vue"
+  },
+  "Frame4": {
+    "description": "Auto imported from components/Frame4.vue"
+  },
+  "LineGraph": {
+    "description": "Auto imported from components/LineGraph.vue"
+  },
+  "Logo": {
+    "description": "Auto imported from components/Logo.vue"
+  },
+  "Maps": {
+    "description": "Auto imported from components/Maps.vue"
+  },
+  "Maps2": {
+    "description": "Auto imported from components/Maps2.vue"
+  },
+  "MbsaEnergyConsumption": {
+    "description": "Auto imported from components/MbsaEnergyConsumption.vue"
+  },
+  "VuetifyLogo": {
+    "description": "Auto imported from components/VuetifyLogo.vue"
+  }
+}
