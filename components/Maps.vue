@@ -1019,7 +1019,7 @@ export default {
 
 <style scoped>
 .GMap__Wrapper {
-  height: 90vh !important;
+  height: calc(100vh - 180px) !important;
 }
 
 .v-btn {
