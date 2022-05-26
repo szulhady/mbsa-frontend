@@ -102,16 +102,16 @@ export default {
         },
         endpoints: {
           login: {
-            // url: "http://178.128.29.241/api/auth/login",
-            url: "http://localhost:7777/api/auth/login",
+            url: "http://178.128.29.241/api/auth/login",
+            // url: "http://localhost:7777/api/auth/login",
             // url: "http://127.0.0.1:5000/api/auth/login",
             method: 'post',
           },
           logout: false,
           user: {
             // url: "http://127.0.0.1:5000/api/auth/me",
-            url: "http://localhost:7777/api/auth/me",
-            // url: "http://178.128.29.241/api/auth/me",
+            // url: "http://localhost:7777/api/auth/me",
+            url: "http://178.128.29.241/api/auth/me",
             method: 'GET',
             // VERY IMPORTANT
             propertyName: false
