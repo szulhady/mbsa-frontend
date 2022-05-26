@@ -81,7 +81,7 @@ export default {
         // .$get("http://68.183.189.84:7777/api/total/month", {})
         // .$get("http://localhost:7777/api/total/month", {})
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           this.month = response.month;
           this.total = response.total;
           // window.location.reload();

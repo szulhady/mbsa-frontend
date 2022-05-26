@@ -119,7 +119,8 @@ export default {
     async register() {
       try {
         await this.$axios
-          .post("http://159.223.55.150/api/user/register", {
+          .post("http://localhost:7777/api/user/register", {
+            // .post("http://178.128.29.241/api/user/register", {
             username: this.username,
             email: this.email,
             password: this.password,

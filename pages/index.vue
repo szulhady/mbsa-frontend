@@ -94,6 +94,7 @@ import DetailBuilding from "~/components/DetailBuilding.vue";
 import moment from "moment";
 
 export default {
+  middleware: ["auth"],
   layout: "main",
   components: {
     Frame,

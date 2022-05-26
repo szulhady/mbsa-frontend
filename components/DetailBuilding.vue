@@ -138,7 +138,7 @@ export default {
           // for (let i = 0; i < response.length; i++) {
           // console.log(this.locations[response[i].building_id - 1]);
           // this.locations[response[i].building_id - 1].data = response[i].ec;
-          console.log(response);
+          // console.log(response);
           this.locations[0].data =
             response[0].total + " KWH, Updated on" + response[0].date;
           // }

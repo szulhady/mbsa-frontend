@@ -102,7 +102,7 @@ export default {
         },
         endpoints: {
           login: {
-            // url: "http://139.59.109.48/api/auth/login",
+            // url: "http://178.128.29.241/api/auth/login",
             url: "http://localhost:7777/api/auth/login",
             // url: "http://127.0.0.1:5000/api/auth/login",
             method: 'post',
@@ -111,7 +111,7 @@ export default {
           user: {
             // url: "http://127.0.0.1:5000/api/auth/me",
             url: "http://localhost:7777/api/auth/me",
-            // url: "http://139.59.109.48/api/auth/me",
+            // url: "http://178.128.29.241/api/auth/me",
             method: 'GET',
             // VERY IMPORTANT
             propertyName: false

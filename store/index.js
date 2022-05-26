@@ -7,18 +7,18 @@ export const mutations = {
   setActiveUser(state, payload){
     let user;
     state.status=[]
-    if(state.auth.user.station[0] == 'ipah1'){
-      user = 0
-    }else if (state.auth.user.station[0] == 'ipah2'){
-      user =1
+    // if(state.auth.user.station[0] == 'ipah1'){
+    //   user = 0
+    // }else if (state.auth.user.station[0] == 'ipah2'){
+    //   user =1
 
-    }else if (state.auth.user.station[0] == 'tkpmPagoh'){
-      user =2
+    // }else if (state.auth.user.station[0] == 'tkpmPagoh'){
+    //   user =2
 
-    }else{
-      user =3
-    }
-    state.activeUser = user
+    // }else{
+    //   user =3
+    // }
+    // state.activeUser = user
   },
 };
 
