@@ -41,7 +41,16 @@
   "MbsaEnergyConsumption": {
     "description": "Auto imported from components/MbsaEnergyConsumption.vue"
   },
+  "Notification": {
+    "description": "Auto imported from components/Notification.vue"
+  },
   "VuetifyLogo": {
     "description": "Auto imported from components/VuetifyLogo.vue"
+  },
+  "LoginForm": {
+    "description": "Auto imported from components/Login/Form.vue"
+  },
+  "RegisterForm2": {
+    "description": "Auto imported from components/Register/Form2.vue"
   }
 }

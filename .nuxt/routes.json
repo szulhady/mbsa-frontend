@@ -2,19 +2,29 @@
   {
     "name": "inspire",
     "path": "/inspire",
-    "component": "C:\\\\Users\\\\Sea-Ic\\\\Desktop\\\\PROJECTS\\\\MBSA\\\\Front\\\\mbsa\\\\pages\\\\inspire.vue",
-    "chunkName": "pages/inspire"
+    "component": "C:\\\\Users\\\\Sea-Ic\\\\Desktop\\\\PROJECTS\\\\MBSA\\\\Front\\\\mbsa latest\\\\pages\\\\inspire.vue",
+    "chunkName": "pages/inspire",
+    "_name": "_57c9e54f"
   },
   {
-    "name": "main",
-    "path": "/main",
-    "component": "C:\\\\Users\\\\Sea-Ic\\\\Desktop\\\\PROJECTS\\\\MBSA\\\\Front\\\\mbsa\\\\pages\\\\main.vue",
-    "chunkName": "pages/main"
+    "name": "login",
+    "path": "/login",
+    "component": "C:\\\\Users\\\\Sea-Ic\\\\Desktop\\\\PROJECTS\\\\MBSA\\\\Front\\\\mbsa latest\\\\pages\\\\login.vue",
+    "chunkName": "pages/login",
+    "_name": "_5b98159e"
+  },
+  {
+    "name": "register",
+    "path": "/register",
+    "component": "C:\\\\Users\\\\Sea-Ic\\\\Desktop\\\\PROJECTS\\\\MBSA\\\\Front\\\\mbsa latest\\\\pages\\\\register.vue",
+    "chunkName": "pages/register",
+    "_name": "_b4e69304"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "C:\\\\Users\\\\Sea-Ic\\\\Desktop\\\\PROJECTS\\\\MBSA\\\\Front\\\\mbsa\\\\pages\\\\index.vue",
-    "chunkName": "pages/index"
+    "component": "C:\\\\Users\\\\Sea-Ic\\\\Desktop\\\\PROJECTS\\\\MBSA\\\\Front\\\\mbsa latest\\\\pages\\\\index.vue",
+    "chunkName": "pages/index",
+    "_name": "_dc1f1af2"
   }
 ]

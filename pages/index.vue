@@ -117,7 +117,7 @@ export default {
     getData: function () {
       this.$axios
         // .$get("http://localhost:7777/api/total", {})
-        .$get("http://165.232.167.69/api/total", {})
+        .$get("http://178.128.29.241/api/total", {})
         .then((response) => {
           // console.log(response);
           this.total = response.total;

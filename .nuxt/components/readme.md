@@ -20,4 +20,7 @@ You can directly use them in pages and other components without the need to impo
 - `<Maps>` | `<maps>` (components/Maps.vue)
 - `<Maps2>` | `<maps2>` (components/Maps2.vue)
 - `<MbsaEnergyConsumption>` | `<mbsa-energy-consumption>` (components/MbsaEnergyConsumption.vue)
+- `<Notification>` | `<notification>` (components/Notification.vue)
 - `<VuetifyLogo>` | `<vuetify-logo>` (components/VuetifyLogo.vue)
+- `<LoginForm>` | `<login-form>` (components/Login/Form.vue)
+- `<RegisterForm2>` | `<register-form2>` (components/Register/Form2.vue)

@@ -45,7 +45,8 @@ export default {
     ['nuxt-gmaps', {
       key: 'AIzaSyAeDeYlQ30SsflxnhsDQmh24qeTuzTdBic',
       //you can use libraries: ['places']
-    }]
+    }],
+    '@nuxtjs/auth'
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
@@ -75,6 +76,52 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
+  },
+  auth: {
+    localStorage: false,
+    cookie: {
+      options: {
+        // expires: 0.001
+        maxAge:100000
+      }
+    },
+    resetOnError: true,
+    redirect: {
+      login: '/login', // User will be redirected to this path if login is required.
+      home: '/', // User will be redirect to this path after login. (rewriteRedirects will rewrite this path)
+      logout: '/login', // User will be redirected to this path if after logout, current route is protected.
+      user: '/user/profile',
+      callback: '/callback' // User will be redirect to this path by the identity provider after login. (Should match configured Allowed Callback URLs (or similar setting) in your app/client with the identity provider)
+    },
+    strategies: {
+      local: {
+        scheme: 'local',
+        token: {
+          maxAge: 10000,
+          type: 'Bearer',
+        },
+        endpoints: {
+          login: {
+            // url: "http://139.59.109.48/api/auth/login",
+            url: "http://localhost:7777/api/auth/login",
+            // url: "http://127.0.0.1:5000/api/auth/login",
+            method: 'post',
+          },
+          logout: false,
+          user: {
+            // url: "http://127.0.0.1:5000/api/auth/me",
+            url: "http://localhost:7777/api/auth/me",
+            // url: "http://139.59.109.48/api/auth/me",
+            method: 'GET',
+            // VERY IMPORTANT
+            propertyName: false
+          }
+        },
+        // tokenRequired: true,
+        tokenType: 'Bearer',
+        localStorage:false
+      }
+  }
   },
 
 }

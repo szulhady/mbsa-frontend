@@ -1017,7 +1017,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .GMap__Wrapper {
   height: calc(100vh - 180px) !important;
 }

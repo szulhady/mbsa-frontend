@@ -1,5 +1,5 @@
 import Vue from 'vue'
-
+import Vuex from 'vuex'
 import Meta from 'vue-meta'
 import ClientOnly from 'vue-client-only'
 import NoSsr from 'vue-no-ssr'
@@ -9,15 +9,17 @@ import NuxtError from '..\\layouts\\error.vue'
 import Nuxt from './components/nuxt.js'
 import App from './App.js'
 import { setContext, getLocation, getRouteData, normalizeError } from './utils'
+import { createStore } from './store.js'
 
 /* Plugins */
 
-import nuxt_plugin_plugin_6c1b4517 from 'nuxt_plugin_plugin_6c1b4517' // Source: .\\components\\plugin.js (mode: 'all')
-import nuxt_plugin_plugin_8e953386 from 'nuxt_plugin_plugin_8e953386' // Source: .\\vuetify\\plugin.js (mode: 'all')
-import nuxt_plugin_nuxtgooglemaps_890e4e46 from 'nuxt_plugin_nuxtgooglemaps_890e4e46' // Source: .\\nuxt-google-maps.js (mode: 'all')
-import nuxt_plugin_axios_15f863ba from 'nuxt_plugin_axios_15f863ba' // Source: .\\axios.js (mode: 'all')
-import nuxt_plugin_moment_9080b5c4 from 'nuxt_plugin_moment_9080b5c4' // Source: .\\moment.js (mode: 'all')
+import nuxt_plugin_plugin_a38e77a8 from 'nuxt_plugin_plugin_a38e77a8' // Source: .\\components\\plugin.js (mode: 'all')
+import nuxt_plugin_plugin_52f57170 from 'nuxt_plugin_plugin_52f57170' // Source: .\\vuetify\\plugin.js (mode: 'all')
+import nuxt_plugin_nuxtgooglemaps_b656b9b0 from 'nuxt_plugin_nuxtgooglemaps_b656b9b0' // Source: .\\nuxt-google-maps.js (mode: 'all')
+import nuxt_plugin_axios_1fb41a4f from 'nuxt_plugin_axios_1fb41a4f' // Source: .\\axios.js (mode: 'all')
+import nuxt_plugin_moment_350a7dae from 'nuxt_plugin_moment_350a7dae' // Source: .\\moment.js (mode: 'all')
 import nuxt_plugin_echarts_73b86b02 from 'nuxt_plugin_echarts_73b86b02' // Source: ..\\plugins\\echarts.js (mode: 'all')
+import nuxt_plugin_plugin_2a165a84 from 'nuxt_plugin_plugin_2a165a84' // Source: .\\auth\\plugin.js (mode: 'all')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -59,8 +61,26 @@ Vue.use(Meta, {"keyName":"head","attribute":"data-n-head","ssrAttribute":"data-n
 
 const defaultTransition = {"name":"page","mode":"out-in","appear":false,"appearClass":"appear","appearActiveClass":"appear-active","appearToClass":"appear-to"}
 
+const originalRegisterModule = Vuex.Store.prototype.registerModule
+
+function registerModule (path, rawModule, options = {}) {
+  const preserveState = process.client && (
+    Array.isArray(path)
+      ? !!path.reduce((namespacedState, path) => namespacedState && namespacedState[path], this.state)
+      : path in this.state
+  )
+  return originalRegisterModule.call(this, path, rawModule, { preserveState, ...options })
+}
+
 async function createApp(ssrContext, config = {}) {
   const router = await createRouter(ssrContext, config)
+
+  const store = createStore(ssrContext)
+  // Add this.$router into store actions/mutations
+  store.$router = router
+
+  // Fix SSR caveat https://github.com/nuxt/nuxt.js/issues/3757#issuecomment-414689141
+  store.registerModule = registerModule
 
   // Create Root instance
 
@@ -69,6 +89,7 @@ async function createApp(ssrContext, config = {}) {
   const app = {
     head: {"titleTemplate":"%s - mbsa","title":"mbsa","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":""}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Roboto:100,300,400,500,700,900&display=swap"},{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Fcdn.jsdelivr.net\u002Fnpm\u002F@mdi\u002Ffont@latest\u002Fcss\u002Fmaterialdesignicons.min.css"}],"style":[],"script":[]},
 
+    store,
     router,
     nuxt: {
       defaultTransition,
@@ -113,6 +134,9 @@ async function createApp(ssrContext, config = {}) {
     ...App
   }
 
+  // Make app available into store via this.app
+  store.app = app
+
   const next = ssrContext ? ssrContext.next : location => app.router.push(location)
   // Resolve route
   let route
@@ -125,6 +149,7 @@ async function createApp(ssrContext, config = {}) {
 
   // Set context to app.context
   await setContext(app, {
+    store,
     route,
     next,
     error: app.nuxt.error.bind(app),
@@ -151,6 +176,9 @@ async function createApp(ssrContext, config = {}) {
       app.context[key] = value
     }
 
+    // Add into store
+    store[key] = app[key]
+
     // Check if plugin not already installed
     const installKey = '__nuxt_' + key + '_installed__'
     if (Vue[installKey]) {
@@ -172,6 +200,13 @@ async function createApp(ssrContext, config = {}) {
   // Inject runtime config as $config
   inject('config', config)
 
+  if (process.client) {
+    // Replace store state before plugins execution
+    if (window.__NUXT__ && window.__NUXT__.state) {
+      store.replaceState(window.__NUXT__.state)
+    }
+  }
+
   // Add enablePreview(previewData = {}) in context for plugins
   if (process.static && process.client) {
     app.context.enablePreview = function (previewData = {}) {
@@ -181,28 +216,32 @@ async function createApp(ssrContext, config = {}) {
   }
   // Plugin execution
 
-  if (typeof nuxt_plugin_plugin_6c1b4517 === 'function') {
-    await nuxt_plugin_plugin_6c1b4517(app.context, inject)
+  if (typeof nuxt_plugin_plugin_a38e77a8 === 'function') {
+    await nuxt_plugin_plugin_a38e77a8(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_plugin_8e953386 === 'function') {
-    await nuxt_plugin_plugin_8e953386(app.context, inject)
+  if (typeof nuxt_plugin_plugin_52f57170 === 'function') {
+    await nuxt_plugin_plugin_52f57170(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_nuxtgooglemaps_890e4e46 === 'function') {
-    await nuxt_plugin_nuxtgooglemaps_890e4e46(app.context, inject)
+  if (typeof nuxt_plugin_nuxtgooglemaps_b656b9b0 === 'function') {
+    await nuxt_plugin_nuxtgooglemaps_b656b9b0(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_axios_15f863ba === 'function') {
-    await nuxt_plugin_axios_15f863ba(app.context, inject)
+  if (typeof nuxt_plugin_axios_1fb41a4f === 'function') {
+    await nuxt_plugin_axios_1fb41a4f(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_moment_9080b5c4 === 'function') {
-    await nuxt_plugin_moment_9080b5c4(app.context, inject)
+  if (typeof nuxt_plugin_moment_350a7dae === 'function') {
+    await nuxt_plugin_moment_350a7dae(app.context, inject)
   }
 
   if (typeof nuxt_plugin_echarts_73b86b02 === 'function') {
     await nuxt_plugin_echarts_73b86b02(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_plugin_2a165a84 === 'function') {
+    await nuxt_plugin_plugin_2a165a84(app.context, inject)
   }
 
   // Lock enablePreview in context
@@ -241,6 +280,7 @@ async function createApp(ssrContext, config = {}) {
   })
 
   return {
+    store,
     app,
     router
   }
