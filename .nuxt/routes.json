@@ -3,28 +3,30 @@
     "name": "inspire",
     "path": "/inspire",
     "component": "C:\\\\Users\\\\Sea-Ic\\\\Desktop\\\\PROJECTS\\\\MBSA\\\\Front\\\\mbsa latest\\\\pages\\\\inspire.vue",
-    "chunkName": "pages/inspire",
-    "_name": "_57c9e54f"
+    "chunkName": "pages/inspire"
   },
   {
     "name": "login",
     "path": "/login",
     "component": "C:\\\\Users\\\\Sea-Ic\\\\Desktop\\\\PROJECTS\\\\MBSA\\\\Front\\\\mbsa latest\\\\pages\\\\login.vue",
-    "chunkName": "pages/login",
-    "_name": "_5b98159e"
+    "chunkName": "pages/login"
+  },
+  {
+    "name": "main",
+    "path": "/main",
+    "component": "C:\\\\Users\\\\Sea-Ic\\\\Desktop\\\\PROJECTS\\\\MBSA\\\\Front\\\\mbsa latest\\\\pages\\\\main.js",
+    "chunkName": "pages/main"
   },
   {
     "name": "register",
     "path": "/register",
     "component": "C:\\\\Users\\\\Sea-Ic\\\\Desktop\\\\PROJECTS\\\\MBSA\\\\Front\\\\mbsa latest\\\\pages\\\\register.vue",
-    "chunkName": "pages/register",
-    "_name": "_b4e69304"
+    "chunkName": "pages/register"
   },
   {
     "name": "index",
     "path": "/",
     "component": "C:\\\\Users\\\\Sea-Ic\\\\Desktop\\\\PROJECTS\\\\MBSA\\\\Front\\\\mbsa latest\\\\pages\\\\index.vue",
-    "chunkName": "pages/index",
-    "_name": "_dc1f1af2"
+    "chunkName": "pages/index"
   }
 ]

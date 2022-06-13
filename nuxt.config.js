@@ -3,8 +3,8 @@ import colors from 'vuetify/es5/util/colors'
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    titleTemplate: '%s - mbsa',
-    title: 'mbsa',
+    titleTemplate: '%s - dashboard',
+    title: 'MBSA',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -102,16 +102,16 @@ export default {
         },
         endpoints: {
           login: {
-            url: "http://178.128.29.241/api/auth/login",
+            // url: "http://178.128.29.241/api/auth/login",
             // url: "http://localhost:7777/api/auth/login",
-            // url: "http://127.0.0.1:5000/api/auth/login",
+            url: "http://104.248.158.194/api/auth/login",
             method: 'post',
           },
           logout: false,
           user: {
             // url: "http://127.0.0.1:5000/api/auth/me",
             // url: "http://localhost:7777/api/auth/me",
-            url: "http://178.128.29.241/api/auth/me",
+            url: "http://104.248.158.194/api/auth/me",
             method: 'GET',
             // VERY IMPORTANT
             propertyName: false

@@ -120,7 +120,7 @@ export default {
       try {
         await this.$axios
           // .post("http://localhost:7777/api/user/register", {
-          .post("http://178.128.29.241/api/user/register", {
+          .post("http://104.248.158.194/api/user/register", {
             username: this.username,
             email: this.email,
             password: this.password,

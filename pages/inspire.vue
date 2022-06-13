@@ -8,12 +8,13 @@
     </div> -->
   <!-- </v-row> -->
   <v-card-title class="border2">
+    <Frame />
     <span style="z-index: 0"> Hello world</span>
   </v-card-title>
 </template>
 
 <script>
-import Frame from "~/components/Frame3";
+import Frame from "~/components/Frame4";
 export default {
   components: {
     Frame,

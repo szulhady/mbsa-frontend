@@ -129,9 +129,9 @@ export default {
   methods: {
     getDataMBSA: function () {
       this.$axios
-        .$get("http://178.128.29.241/api/total/latestMBSA", {})
+        // .$get("http://178.128.29.241/api/total/latestMBSA", {})
         // .$get("http://68.183.189.84:7777/api/total/latestMBSA", {})
-        // .$get("http://localhost:7777/api/total/latestMBSA", {})
+        .$get("http://localhost:7777/api/total/latestMBSA", {})
         .then((response) => {
           // console.log(response.building_id);
           // window.location.reload();
@@ -149,7 +149,7 @@ export default {
     },
     getData: function () {
       this.$axios
-        .$get("http://178.128.29.241/api/total/latest", {})
+        .$get("http://104.248.158.194/api/total/latest", {})
         // .$get("http://localhost:7777/api/total/latest", {})
         .then((response) => {
           // console.log(response.building_id);
